@@ -62,6 +62,7 @@ public class Tower : MonoBehaviour
 
         foreach (Enemy enemy in enemies)
         {
+            if (!enemy.gameObject.activeSelf) continue;
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if(distance > shootDistance)
             {

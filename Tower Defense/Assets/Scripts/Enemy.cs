@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
     public void ReduceHealth(int damage)
     {
         currentHealth -= damage;
+        SetHealthBarSize();
         AudioPlayer.Instance.Play("hit-enemy");
         if (currentHealth <= 0)
         {
@@ -72,6 +73,11 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
             AudioPlayer.Instance.Play("enemy-die");
         }
+    }
+
+    private void SetHealthBarSize()
+    {
+        healthFill.size = new Vector2((float)currentHealth / (float)maxHealth * healthBar.size.x, healthFill.size.y);
     }
 
     private void OnEnable()
