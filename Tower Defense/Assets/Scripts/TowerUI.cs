@@ -46,5 +46,6 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         towerPrefab = tower;
         towerIcon.sprite = tower.GetTowerHeadIcon();
+        towerIcon.color = tower.GetTowerHeadColor();
     }
 }

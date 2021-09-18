@@ -10,10 +10,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer healthBar;
     [SerializeField] private SpriteRenderer healthFill;
 
+    private SpriteRenderer enemySpriteRenderer;
     private int currentHealth;
+    private float originalMovementSpeed;
+    public float slowTimer = 0f;
 
     public Vector3 Target { get; private set; }
     public int CurrentPathIndex { get; private set; }
+
+    private void Awake()
+    {
+        enemySpriteRenderer = GetComponent<SpriteRenderer>();
+        originalMovementSpeed = movementSpeed;
+    }
+
+    private void Update()
+    {
+        slowTimer -= Time.unscaledDeltaTime;
+        if(slowTimer <= 0f)
+        {
+            UnslowEnemy();
+        }
+    }
 
     public void MoveToTarget()
     {
@@ -75,6 +93,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void ApplySlowEffect(float slowDuration)
+    {
+        slowTimer = slowDuration;
+        movementSpeed *= 0.5f;
+        enemySpriteRenderer.color = Color.blue;
+    }
+
+    private void UnslowEnemy()
+    {
+        slowTimer = 0;
+        movementSpeed = originalMovementSpeed;
+        enemySpriteRenderer.color = Color.white;
+    }
+
     private void SetHealthBarSize()
     {
         healthFill.size = new Vector2((float)currentHealth / (float)maxHealth * healthBar.size.x, healthFill.size.y);
@@ -84,5 +116,6 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthFill.size = healthBar.size;
+        UnslowEnemy();
     }
 }

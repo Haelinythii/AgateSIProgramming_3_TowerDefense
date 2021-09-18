@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float shootDelay = 5f;
     [SerializeField] private float bulletSpeed = 1f;
     [SerializeField] private float bulletSplashRadius = 0f;
+    [SerializeField] private float bulletSlowDuration = 0f;
     [SerializeField] private Bullet bulletPrefab;
     private float shootDelayTimer;
 
@@ -20,11 +21,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private SpriteRenderer towerHead;
     public Enemy enemyTarget;
     private Quaternion targetRotation;
-
-    public Sprite GetTowerHeadIcon()
-    {
-        return towerHead.sprite;
-    }
 
     public void SetPlacePosition(Vector2? newPosisiton)
     {
@@ -108,11 +104,21 @@ public class Tower : MonoBehaviour
 
             Bullet bullet = LevelManager.Instance.GetBulletFromPool(bulletPrefab);
             bullet.transform.position = transform.position;
-            bullet.SetAttributes(shootPower, bulletSpeed, bulletSplashRadius);
+            bullet.SetAttributes(shootPower, bulletSpeed, bulletSplashRadius, bulletSlowDuration);
             bullet.SetTarget(enemyTarget);
             bullet.gameObject.SetActive(true);
 
             shootDelayTimer = shootDelay;
         }
+    }
+
+    public Sprite GetTowerHeadIcon()
+    {
+        return towerHead.sprite;
+    }
+
+    public Color GetTowerHeadColor()
+    {
+        return towerHead.color;
     }
 }

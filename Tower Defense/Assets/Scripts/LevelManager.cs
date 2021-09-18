@@ -88,6 +88,7 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     enemy.gameObject.SetActive(false);
+                    ReduceLives(1);
                 }
             }
             else

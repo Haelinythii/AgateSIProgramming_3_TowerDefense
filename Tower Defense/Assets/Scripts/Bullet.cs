@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     private int power;
     private float speed;
     private float splashRadius;
+    private float slowDuration;
 
     [Header("Reference")]
     private Enemy target;
@@ -48,17 +49,22 @@ public class Bullet : MonoBehaviour
             else
             {
                 target.ReduceHealth(power);
+                if(slowDuration > 0f)
+                {
+                    target.ApplySlowEffect(slowDuration);
+                }
             }
 
             target = null;
         }
     }
 
-    public void SetAttributes(int _power, float _speed, float _splashRadius)
+    public void SetAttributes(int _power, float _speed, float _splashRadius, float _slowDuration)
     {
         power = _power;
         speed = _speed;
         splashRadius = _splashRadius;
+        slowDuration = _slowDuration;
     }
 
     public void SetTarget(Enemy enemy)

@@ -988,6 +988,7 @@ MonoBehaviour:
   - {fileID: 8478035087846154100, guid: 9666db3bd1a4bb0469554739f1b74783, type: 3}
   - {fileID: 961420922984288867, guid: 4693a81adab748f40aadffaaf25b6731, type: 3}
   - {fileID: 5152259847615712377, guid: 3ef79e56e56e67c4095cba13acd76aba, type: 3}
+  - {fileID: 3587845595011559312, guid: cd0cdd3b88e443246ac7acc2ba1d6fd0, type: 3}
   enemyPrefabs:
   - {fileID: 8249562418874698059, guid: b87f84471953aa348a83421993339b0d, type: 3}
   - {fileID: 1427699205608272990, guid: 6099d7efeed5de448a007f0669fd2537, type: 3}
@@ -2492,6 +2493,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 65}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: 150, y: 65}
+  m_SizeDelta: {x: 841.3, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
