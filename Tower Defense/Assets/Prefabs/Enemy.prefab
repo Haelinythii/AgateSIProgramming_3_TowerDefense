@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8890591314981534764}
   - component: {fileID: 263649855779101611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 7687131654276332270}
   - component: {fileID: 1182865829979936628}
   - component: {fileID: 1675120632576506644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,9 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  moveSpeed: 1
+  movementSpeed: 1
   healthBar: {fileID: 263649855779101611}
   healthFill: {fileID: 7769888621497036773}
+  slowTimer: 0
 --- !u!1 &8237079223965552472
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6153841212291358475}
   - component: {fileID: 7769888621497036773}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

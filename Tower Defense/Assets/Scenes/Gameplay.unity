@@ -989,6 +989,7 @@ MonoBehaviour:
   - {fileID: 961420922984288867, guid: 4693a81adab748f40aadffaaf25b6731, type: 3}
   - {fileID: 5152259847615712377, guid: 3ef79e56e56e67c4095cba13acd76aba, type: 3}
   - {fileID: 3587845595011559312, guid: cd0cdd3b88e443246ac7acc2ba1d6fd0, type: 3}
+  - {fileID: 1720072833204580655, guid: a0d9200de5258384b92449eca00d0de8, type: 3}
   enemyPrefabs:
   - {fileID: 8249562418874698059, guid: b87f84471953aa348a83421993339b0d, type: 3}
   - {fileID: 1427699205608272990, guid: 6099d7efeed5de448a007f0669fd2537, type: 3}
@@ -1004,9 +1005,9 @@ MonoBehaviour:
   - {fileID: 504294523}
   - {fileID: 1563799707}
   - {fileID: 586082898}
-  enemySpawnDelay: 5
+  enemySpawnDelay: 2
   maxLives: 3
-  totalEnemies: 15
+  totalEnemies: 150
   gameOverPanel: {fileID: 719400142}
   statusText: {fileID: 164375379}
   livesText: {fileID: 1319659908}

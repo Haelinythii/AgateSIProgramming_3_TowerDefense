@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     private float speed;
     private float splashRadius;
     private float slowDuration;
+    private int maxBounceToOtherTarget;
+    private float bounceRadius;
+    public LayerMask enemyLayerMask;
 
     [Header("Reference")]
     private Enemy target;
@@ -40,9 +43,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.Equals(target.gameObject))
         {
-            gameObject.SetActive(false);
-
-            if(splashRadius > 0f)
+            if (splashRadius > 0f)
             {
                 LevelManager.Instance.ExplodeAt(transform.position, splashRadius, power);
             }
@@ -55,16 +56,53 @@ public class Bullet : MonoBehaviour
                 }
             }
 
-            target = null;
+            if (maxBounceToOtherTarget <= 0)
+            {
+                target = null;
+                gameObject.SetActive(false);
+            }
+            else
+                RicochetToOtherTarget();
+
+            //target = null;
         }
     }
 
-    public void SetAttributes(int _power, float _speed, float _splashRadius, float _slowDuration)
+    private void RicochetToOtherTarget()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, bounceRadius, enemyLayerMask);
+        Enemy newEnemyTarget = null;
+        foreach (Collider2D enemy in hits)
+        {
+            if (!enemy.GetComponent<Enemy>().Equals(target))
+            {
+                newEnemyTarget = enemy.GetComponent<Enemy>();
+                break;
+            }
+        }
+
+        if(newEnemyTarget == null)
+        {
+            gameObject.SetActive(false);
+            maxBounceToOtherTarget = 0;
+            bounceRadius = 0;
+            target = null;
+        }
+        else
+        {
+            target = newEnemyTarget;
+            maxBounceToOtherTarget--;
+        }
+    }
+
+    public void SetAttributes(int _power, float _speed, float _splashRadius, float _slowDuration, int _maxBounceToOtherTarget, float _bounceRadius)
     {
         power = _power;
         speed = _speed;
         splashRadius = _splashRadius;
         slowDuration = _slowDuration;
+        maxBounceToOtherTarget = _maxBounceToOtherTarget;
+        bounceRadius = _bounceRadius;
     }
 
     public void SetTarget(Enemy enemy)

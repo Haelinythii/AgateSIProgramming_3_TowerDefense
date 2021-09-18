@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 3046520159078042401, guid: d45779ae7b9944f4d95ed450708eca0b,
         type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Bullet 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674429490918556055, guid: d45779ae7b9944f4d95ed450708eca0b,
+        type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 3784012660360520123, guid: d45779ae7b9944f4d95ed450708eca0b,
         type: 3}
